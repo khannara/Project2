@@ -84,15 +84,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 </div>
                                 <div align="left">
                                     <div class="row">
-                                        <!--                                        <div class="col-sm-12">-->
-                                        <!--                                            <form>-->
-                                        <!--                                                <input type="radio" name="rank" class="showSolutionCheckbox"-->
-                                        <!--                                                       onchange="solutionCheckboxChange()" checked="false">Simple Rank-->
-                                        <!--                                                <input type="radio" name="rank" class="showSolutionCheckbox"-->
-                                        <!--                                                       onchange="solutionCheckboxChange()" checked="true">Advance Rank-->
-                                        <!--                                            </form>-->
-                                        <!--                                        </div>-->
-
                                         <div id="myRadioGroup">
                                             <input type="radio" name="rank" checked="checked" value="1"/>Simple Rank
                                             <input type="radio" name="rank" value="2"/>Advance Rank
