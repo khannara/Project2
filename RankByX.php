@@ -108,7 +108,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 <div id="Rank1" class="desc">
                     <?php
-                    $hitCountSimple = $rankByXFunction->getHitCount(true);
+                    for ($firstWord = 0; $firstWord < count($wordsArray); $firstWord++) {
+                        $totalCount = 0;
+                        $word1 = $wordsArray[$firstWord];
+                        for ($secondWord = 0; $secondWord < count($wordsArray); $secondWord++) {
+                            if ($firstWord == $secondWord)
+                                continue;
+
+                            $word2 = $wordsArray[$secondWord];
+
+                            $hitCountSimple = $rankByXFunction->getHitCountBetweenWordsSimple($word1, $word2);
+                            echo $word1."-".$word2.": ".$hitCountSimple."<br />";
+                            if ($hitCountSimple != null)
+                                $totalCount++;
+                        }
+
+                        echo "Total: ".$totalCount."<br /><br />";
+                    }
                     ?>
                     <table align="center">
                         <tr>
@@ -126,7 +142,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 <div id="Rank2" class="desc" style="display: none;">
                     <?php
-                    $hitCountSimple = $rankByXFunction->getHitCount(false);
+                    for ($firstWord = 0; $firstWord < count($wordsArray); $firstWord++) {
+                        $totalCount = 0;
+                        $hitCountAdvance = array();
+                        $word1 = $wordsArray[$firstWord];
+                        for ($secondWord = 0; $secondWord < count($wordsArray); $secondWord++) {
+                            if ($firstWord == $secondWord)
+                                continue;
+
+                            $word2 = $wordsArray[$secondWord];
+
+                            $hitCountAdvance = $rankByXFunction->getHitCountBetweenWordsAdvance($word1, $word2);
+
+                            $totalCount += count($hitCountAdvance);
+                            echo $word1."-".$word2.": ";
+
+                            foreach ($hitCountAdvance as $value) {
+                                echo $value." ";
+                            }
+                            echo "<br />";
+                        }
+                        echo "Total: ".$totalCount."<br /><br />";
+                    }
                     ?>
                     <table align="center">
                         <tr>

@@ -14,12 +14,47 @@ class RankByXFunctions
         $this->wordProcessor = new wordProcessor(" ", "telugu");
     }
 
-    function getHitCount($isSimpleMode)
+    function getHitCountBetweenWordsSimple($word1, $word2)
     {
+        $lengthOfWord = strlen($word1);
+        $this->wordProcessor->setWord($word2, "telugu");
+
+        for ($j = 0; $j <= $lengthOfWord; $j++) {
+            $char = substr($word1, $j, 1);
+            $hitCount = $this->wordProcessor->containsChar($char);
+
+            if ($hitCount) {
+                return $char;
+            }
+        }
+
+        return null;
+    }
+
+    function getHitCountBetweenWordsAdvance($word1, $word2)
+    {
+        $charactersFound = array();
+        $lengthOfWord = strlen($word1);
+        $this->wordProcessor->setWord($word2, "telugu");
         $count = 0;
 
+        for ($j = 0; $j <= $lengthOfWord; $j++) {
+            $char = substr($word1, $j, 1);
+            $hitCount = $this->wordProcessor->containsChar($char);
+
+            if ($hitCount) {
+                $count++;
+                array_push($charactersFound, $char);
+            }
+        }
+
+        return $charactersFound;
+    }
+
+    function getHitCount($isSimpleMode)
+    {
         for ($firstWord = 0; $firstWord < $this->sizeOfWordsInputArray; $firstWord++) {
-            //$count = 0;
+            $count = 0;
             echo $this->wordsInputArray[$firstWord] . "-";
             $lengthOfWord = strlen($this->wordsInputArray[$firstWord]);
 
