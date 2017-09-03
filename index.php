@@ -27,7 +27,7 @@
     </style>
 </head>
 <body>
-<form target="_blank" action="CrosswordPuzzle.php" method="post" class="form-horizontal">
+<form target="_blank" action="RankByX.php" method="post" class="form-horizontal">
     <div class="container-fluid">
         <div class="jumbotron" id="jumbos">
         </div>

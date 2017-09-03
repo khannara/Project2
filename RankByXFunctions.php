@@ -58,7 +58,7 @@ class RankByXFunctions
             for ($column = 0; $column < $this->maxcols; $column++) {
 
                 if ($column == 0)
-                    echo "<td>".$this->wordsInputArray[$arrayIndex]."</td>";
+                    echo "<td>" . $this->wordsInputArray[$arrayIndex] . "</td>";
                 else
                     echo "<td>Filler</td>";
             }
