@@ -141,33 +141,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
 
                 <div id="Rank2" class="desc" style="display: none;">
-                    <!--                    --><?php
-                    //                    for ($firstWord = 0; $firstWord < count($wordsArray); $firstWord++) {
-                    //                        $totalCount = 0;
-                    //                        $hitCountAdvance = array();
-                    //                        $word1 = $wordsArray[$firstWord];
-                    //                        for ($secondWord = 0; $secondWord < count($wordsArray); $secondWord++) {
-                    //                            if ($firstWord == $secondWord)
-                    //                                continue;
-                    //
-                    //                            $word2 = $wordsArray[$secondWord];
-                    //
-                    //                            $hitCountAdvance = $rankByXFunction->getHitCountBetweenWordsAdvance($word1, $word2);
-                    //
-                    //                            $totalCount += count($hitCountAdvance);
-                    //
-                    //                            $newWord1 = $word1;
-                    //                            foreach ($hitCountAdvance as $value) {
-                    //                                $newWord1 = $rankByXFunction->boldLetterInWord($newWord1,$value);
-                    //                                $word2 = $rankByXFunction->boldLetterInWord($word2,$value);
-                    //                            }
-                    //                            echo $newWord1."-".$word2.": ";
-                    //                            echo "<br />";
-                    //                        }
-                    //                        echo "Total: ".$totalCount."<br /><br />";
-                    //                    }
-                    //
-                    //                    ?>
                     <table align="center">
                         <tr>
                             <th>Rank</th>
