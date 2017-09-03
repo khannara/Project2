@@ -2,6 +2,8 @@
 require("word_processor.php");
 require("RankByXFunctions.php");
 
+//hello
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Set starting variables gotten from post
