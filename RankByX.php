@@ -2,8 +2,6 @@
 require("word_processor.php");
 require("RankByXFunctions.php");
 
-//hello
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Set starting variables gotten from post
@@ -58,6 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </div>
                     </div>
                 </div>
+                <p>Rank words by intersections.</p>
                 <?php
 
                 $maxcols = 4;

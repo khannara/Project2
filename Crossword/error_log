@@ -1,0 +1,46 @@
+[05-Jul-2017 19:06:51 America/Denver] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 72 bytes) in /home1/icsbinco/public_html/crossword/Crossword.php on line 756
+[05-Jul-2017 19:07:19 America/Denver] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 72 bytes) in /home1/icsbinco/public_html/crossword/Crossword.php on line 756
+[05-Jul-2017 19:08:02 America/Denver] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home1/icsbinco/public_html/crossword/Crossword.php on line 912
+[06-Jul-2017 17:08:36 America/Denver] PHP Notice:  Undefined offset: 0 in /home1/icsbinco/public_html/crossword/Crossword.php on line 95
+[06-Jul-2017 17:08:36 America/Denver] PHP Warning:  array_unique() expects parameter 1 to be array, null given in /home1/icsbinco/public_html/crossword/Crossword.php on line 862
+[06-Jul-2017 17:08:47 America/Denver] PHP Notice:  Undefined offset: 0 in /home1/icsbinco/public_html/crossword/Crossword.php on line 95
+[06-Jul-2017 17:08:47 America/Denver] PHP Warning:  array_unique() expects parameter 1 to be array, null given in /home1/icsbinco/public_html/crossword/Crossword.php on line 862
+[06-Jul-2017 17:08:55 America/Denver] PHP Notice:  Undefined offset: 0 in /home1/icsbinco/public_html/crossword/Crossword.php on line 95
+[06-Jul-2017 17:08:55 America/Denver] PHP Warning:  array_unique() expects parameter 1 to be array, null given in /home1/icsbinco/public_html/crossword/Crossword.php on line 862
+[06-Jul-2017 21:18:57 America/Denver] PHP Notice:  Undefined offset: 0 in /home1/icsbinco/public_html/crossword/Crossword.php on line 95
+[06-Jul-2017 21:18:57 America/Denver] PHP Warning:  array_unique() expects parameter 1 to be array, null given in /home1/icsbinco/public_html/crossword/Crossword.php on line 862
+[08-Jul-2017 17:15:08 America/Denver] PHP Notice:  Undefined offset: 0 in /home1/icsbinco/public_html/crossword/Crossword.php on line 95
+[08-Jul-2017 17:15:08 America/Denver] PHP Warning:  array_unique() expects parameter 1 to be array, null given in /home1/icsbinco/public_html/crossword/Crossword.php on line 862
+[10-Jul-2017 11:30:35 America/Denver] PHP Notice:  Undefined offset: 0 in /home1/icsbinco/public_html/crossword/Crossword.php on line 95
+[10-Jul-2017 11:30:35 America/Denver] PHP Warning:  array_unique() expects parameter 1 to be array, null given in /home1/icsbinco/public_html/crossword/Crossword.php on line 862
+[12-Jul-2017 19:49:24 America/Denver] PHP Notice:  Undefined offset: 0 in /home1/icsbinco/public_html/crossword/Crossword.php on line 904
+[12-Jul-2017 19:49:24 America/Denver] PHP Warning:  array_unique() expects parameter 1 to be array, null given in /home1/icsbinco/public_html/crossword/Crossword.php on line 904
+[12-Jul-2017 19:49:40 America/Denver] PHP Notice:  Undefined offset: 0 in /home1/icsbinco/public_html/crossword/Crossword.php on line 904
+[12-Jul-2017 19:49:40 America/Denver] PHP Warning:  array_unique() expects parameter 1 to be array, null given in /home1/icsbinco/public_html/crossword/Crossword.php on line 904
+[13-Jul-2017 23:39:33 America/Denver] PHP Notice:  Undefined offset: 0 in /home1/icsbinco/public_html/crossword/Crossword.php on line 102
+[13-Jul-2017 23:44:15 America/Denver] PHP Notice:  Undefined offset: 49 in /home1/icsbinco/public_html/crossword/Crossword.php on line 886
+[13-Jul-2017 23:44:15 America/Denver] PHP Warning:  array_unique() expects parameter 1 to be array, null given in /home1/icsbinco/public_html/crossword/Crossword.php on line 886
+[13-Jul-2017 23:44:15 America/Denver] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home1/icsbinco/public_html/crossword/Crossword.php on line 886
+[13-Jul-2017 23:48:48 America/Denver] PHP Notice:  Undefined offset: 49 in /home1/icsbinco/public_html/crossword/Crossword.php on line 886
+[13-Jul-2017 23:48:48 America/Denver] PHP Warning:  array_unique() expects parameter 1 to be array, null given in /home1/icsbinco/public_html/crossword/Crossword.php on line 886
+[13-Jul-2017 23:48:48 America/Denver] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home1/icsbinco/public_html/crossword/Crossword.php on line 886
+[13-Jul-2017 23:52:08 America/Denver] PHP Notice:  Undefined offset: 49 in /home1/icsbinco/public_html/crossword/Crossword.php on line 886
+[13-Jul-2017 23:52:08 America/Denver] PHP Warning:  array_unique() expects parameter 1 to be array, null given in /home1/icsbinco/public_html/crossword/Crossword.php on line 886
+[13-Jul-2017 23:52:08 America/Denver] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home1/icsbinco/public_html/crossword/Crossword.php on line 886
+[13-Jul-2017 23:52:20 America/Denver] PHP Notice:  Undefined offset: 49 in /home1/icsbinco/public_html/crossword/Crossword.php on line 886
+[13-Jul-2017 23:52:20 America/Denver] PHP Warning:  array_unique() expects parameter 1 to be array, null given in /home1/icsbinco/public_html/crossword/Crossword.php on line 886
+[13-Jul-2017 23:52:20 America/Denver] PHP Warning:  array_values() expects parameter 1 to be array, null given in /home1/icsbinco/public_html/crossword/Crossword.php on line 886
+[22-Jul-2017 20:21:47 America/Denver] PHP Notice:  Undefined offset: 0 in /home1/icsbinco/public_html/crossword/Crossword.php on line 102
+[22-Jul-2017 20:22:02 America/Denver] PHP Notice:  Undefined offset: 0 in /home1/icsbinco/public_html/crossword/Crossword.php on line 102
+[22-Jul-2017 20:22:18 America/Denver] PHP Notice:  Undefined offset: 0 in /home1/icsbinco/public_html/crossword/Crossword.php on line 102
+[22-Jul-2017 20:44:20 America/Denver] PHP Notice:  Undefined offset: 0 in /home1/icsbinco/public_html/crossword/Crossword.php on line 102
+[29-Jul-2017 09:42:50 America/Denver] PHP Notice:  Undefined offset: 0 in /home1/icsbinco/public_html/crossword/Crossword.php on line 102
+[31-Jul-2017 10:11:42 America/Denver] PHP Notice:  Undefined offset: 0 in /home1/icsbinco/public_html/crossword/Crossword.php on line 102
+[03-Aug-2017 20:25:12 America/Denver] PHP Notice:  Undefined offset: 0 in /home1/icsbinco/public_html/crossword/Crossword.php on line 102
+[05-Aug-2017 21:17:45 America/Denver] PHP Notice:  Undefined offset: 0 in /home1/icsbinco/public_html/crossword/Crossword.php on line 102
+[08-Aug-2017 16:31:11 America/Denver] PHP Notice:  Undefined offset: 0 in /home1/icsbinco/public_html/crossword/Crossword.php on line 102
+[10-Aug-2017 06:26:42 America/Denver] PHP Notice:  Undefined offset: 0 in /home1/icsbinco/public_html/crossword/Crossword.php on line 102
+[13-Aug-2017 21:40:27 America/Denver] PHP Notice:  Undefined offset: 0 in /home1/icsbinco/public_html/crossword/Crossword.php on line 102
+[14-Aug-2017 19:52:32 America/Denver] PHP Notice:  Undefined offset: 0 in /home1/icsbinco/public_html/crossword/Crossword.php on line 102
+[14-Aug-2017 20:24:17 America/Denver] PHP Notice:  Undefined offset: 0 in /home1/icsbinco/public_html/crossword/Crossword.php on line 102
+[18-Aug-2017 18:45:09 America/Denver] PHP Notice:  Undefined offset: 0 in /home1/icsbinco/public_html/crossword/Crossword.php on line 102
