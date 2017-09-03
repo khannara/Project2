@@ -71,3 +71,19 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
     background-color: #D8F781;
 }
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"] {
+    background-color: deepskyblue;
+    border: 100px solid darkblue;
+    border-radius: 25px;
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    vertical-align: middle;
+    margin: -5px 10px 0 10px;
+}

@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </div>
                     </div>
                 </div>
-                <p>Rank words by intersections.</p>
+                <p>Rank the following words by intersections</p>
                 <?php
 
                 $rows = sizeof($wordsArray);
