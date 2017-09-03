@@ -107,25 +107,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
 
                 <div id="Rank1" class="desc">
-                    <?php
-                    for ($firstWord = 0; $firstWord < count($wordsArray); $firstWord++) {
-                        $totalCount = 0;
-                        $word1 = $wordsArray[$firstWord];
-                        for ($secondWord = 0; $secondWord < count($wordsArray); $secondWord++) {
-                            if ($firstWord == $secondWord)
-                                continue;
-
-                            $word2 = $wordsArray[$secondWord];
-
-                            $hitCountSimple = $rankByXFunction->getHitCountBetweenWordsSimple($word1, $word2);
-                            echo $word1."-".$word2.": ".$hitCountSimple."<br />";
-                            if ($hitCountSimple != null)
-                                $totalCount++;
-                        }
-
-                        echo "Total: ".$totalCount."<br /><br />";
-                    }
-                    ?>
                     <table align="center">
                         <tr>
                             <th>Rank</th>
@@ -134,7 +115,57 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <th>Intersections</th>
                         </tr>
                         <?php
-                        $rankByXFunction->generateSolutionTable();
+                        $masterArray = array();
+                        for ($firstWord = 0; $firstWord < count($wordsArray); $firstWord++) {
+                            $totalCount = 0;
+                            $hitCountAdvance = array();
+                            $word1 = $wordsArray[$firstWord];
+                            $compareString = "";
+
+                            for ($secondWord = 0; $secondWord < count($wordsArray); $secondWord++) {
+                                if ($firstWord == $secondWord)
+                                    continue;
+
+                                $word2 = $wordsArray[$secondWord];
+
+                                $hitCountAdvance = $rankByXFunction->getHitCountBetweenWords($word1, $word2, false);
+
+                                $totalCount += count($hitCountAdvance);
+
+                                $newWord1 = $word1;
+                                foreach ($hitCountAdvance as $value) {
+                                    $newWord1 = $rankByXFunction->boldLetterInWord($newWord1, $value);
+                                    $word2 = $rankByXFunction->boldLetterInWord($word2, $value);
+                                }
+                                $compareString = $compareString . $newWord1 . " - " . $word2 . ", ";
+                            }
+
+                            array_push($masterArray, array($word1, rtrim($compareString, ', '), $totalCount));
+                        }
+
+                        array_multisort(array_column($masterArray, 2), SORT_DESC, $masterArray);
+
+                        for ($i = 0; $i < count($masterArray); $i++) {
+                            echo "<tr>";
+
+                            for ($column = 0; $column < 4; $column++) {
+                                switch ($column) {
+                                    case 0:
+                                        echo "<td>" . ($i + 1) . "</td>";
+                                        break;
+                                    case 1:
+                                        echo "<td>" . $masterArray[$i][2] . "</td>";
+                                        break;
+                                    case 2:
+                                        echo "<td>" . $masterArray[$i][0] . "</td>";
+                                        break;
+                                    case 3:
+                                        echo "<td>" . $masterArray[$i][1] . "</td>";
+                                        break;
+                                }
+                            }
+                            echo "</tr>";
+                        }
                         ?>
                     </table>
 
@@ -164,7 +195,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                                 $word2 = $wordsArray[$secondWord];
 
-                                $hitCountAdvance = $rankByXFunction->getHitCountBetweenWordsAdvance($word1, $word2);
+                                $hitCountAdvance = $rankByXFunction->getHitCountBetweenWords($word1, $word2, false);
 
                                 $totalCount += count($hitCountAdvance);
 
