@@ -10,15 +10,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $wordsArray = explode("\n", $wordInputFromTextBox);
 
     $rankByXFunction = new RankByXFunctions($wordsArray);
-// If visiting for the first time by skipping the index page redirect them to it
 } else {
     $url = "index.php";
 
     header("Location: " . $url);
     die();
 }
-
 ?>
+
+
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN''http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
 <head>
@@ -59,9 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <p>Rank words by intersections.</p>
                 <?php
 
-                $maxcols = 4;
                 $rows = sizeof($wordsArray);
-
 
                 for ($input = 0; $input < $rows; $input++) {
                     $incrementedValue = $input + 1;
@@ -86,13 +84,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 </div>
                                 <div align="left">
                                     <div class="row">
-                                        <div class="col-sm-12">
-                                            <form>
-                                                <input type="radio" name="selection" class="showSolutionCheckbox"
-                                                       onchange="solutionCheckboxChange()" checked>Simple Rank
-                                                <input type="radio" name="selection" class="showSolutionCheckbox"
-                                                       onchange="solutionCheckboxChange()">Advance Rank
-                                            </form>
+                                        <!--                                        <div class="col-sm-12">-->
+                                        <!--                                            <form>-->
+                                        <!--                                                <input type="radio" name="rank" class="showSolutionCheckbox"-->
+                                        <!--                                                       onchange="solutionCheckboxChange()" checked="false">Simple Rank-->
+                                        <!--                                                <input type="radio" name="rank" class="showSolutionCheckbox"-->
+                                        <!--                                                       onchange="solutionCheckboxChange()" checked="true">Advance Rank-->
+                                        <!--                                            </form>-->
+                                        <!--                                        </div>-->
+
+                                        <div id="myRadioGroup">
+                                            <input type="radio" name="rank" checked="checked" value="1"/>Simple Rank
+                                            <input type="radio" name="rank" value="2"/>Advance Rank
                                         </div>
                                     </div>
                                 </div>
@@ -112,31 +115,56 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                 </div>
 
-                <table align="center">
-                    <tr>
-                        <th>Rank</th>
-                        <th>X Count</th>
-                        <th>Word</th>
-                        <th>Intersections</th>
-                    </tr>
-
+                <div id="Rank1" class="desc">
                     <?php
                     $hitCountSimple = $rankByXFunction->getHitCount(true);
-                    echo "<br />\n";
-                    echo "<br />\n";
-                    echo "<br />\n";
-                    $hitCountAdvance = $rankByXFunction->getHitCount(false);
-
-                    $rankByXFunction->generateSolutionTable();
                     ?>
+                    <table align="center">
+                        <tr>
+                            <th>Rank</th>
+                            <th>X Count</th>
+                            <th>Word</th>
+                            <th>Intersections</th>
+                        </tr>
+                        <?php
+                        $rankByXFunction->generateSolutionTable();
+                        ?>
+                    </table>
 
-                </table>
+                </div>
+
+                <div id="Rank2" class="desc" style="display: none;">
+                    <?php
+                    $hitCountSimple = $rankByXFunction->getHitCount(false);
+                    ?>
+                    <table align="center">
+                        <tr>
+                            <th>Rank</th>
+                            <th>X Count</th>
+                            <th>Word</th>
+                            <th>Intersections</th>
+                        </tr>
+                        <?php
+                        //                        $rankByXFunction->generateSolutionTable();
+                        ?>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 </div>
 </body>
+
 <script>
+    $(document).ready(function () {
+        $("input[name$='rank']").click(function () {
+            var test = $(this).val();
+
+            $("div.desc").hide();
+            $("#Rank" + test).show();
+        });
+    });
+
     // Set default spectrum elements
     $(".blankSquareColor").spectrum({
         color: "#FFFFFF",
@@ -164,7 +192,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         change: function (color) {
             $(".filled").css("border", "2px solid " + color.toHexString());
 
-// Only change hidden lines if they're showing - need to remain white for copy and pasting to word if hidden
+            // Only change hidden lines if they're showing - need to remain white for copy and pasting to word if hidden
             if ($(".unfilled").css("visibility") === "visible") {
                 $(".unfilled").css("border", "2px solid " + color.toHexString());
             }
@@ -173,56 +201,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     });
 
     $(".crossword").css("border", "2px solid " + $(".lineColor").spectrum('get').toHexString());
-
-    // Updates the solution section to hidden/visable on check box update
-    function solutionCheckboxChange() {
-        if ($('.showSolutionCheckbox').is(":checked")) {
-            $(".solutionSection").show();
-        }
-        else {
-            $(".solutionSection").hide();
-        }
-    }
-
-    // Updates the solution section to hidden/visable on check box update
-    function blankSquareCheckboxChange() {
-        if ($('.showBlankSquaresCheckbox').is(":checked")) {
-            $(".unfilled").css("visibility", "visible");
-            $(".unfilled").css("border", "2px solid " + $(".lineColor").spectrum('get').toHexString());
-
-        }
-        else {
-            $(".unfilled").css("visibility", "hidden");
-            $(".unfilled").css("border", "0px solid #FFFFFF"); //+ $(".lineColor").spectrum('get').toHexString());
-        }
-    }
-
-    // Updates puzzle to show solution or fill-in puzzle hints
-    function puzzleHintsChange() {
-        if ($('#puzzletype').val() == "crossword") {
-            $(".crosswordHints").show();
-            $(".fillinHints").hide();
-            $(".skeletonHints").hide();
-
-            $(".crosswordPuzzle").show();
-            $(".skeletonPuzzle").hide();
-        }
-        else if ($('#puzzletype').val() == "fillin") {
-            $(".crosswordHints").hide();
-            $(".fillinHints").show();
-            $(".skeletonHints").hide();
-
-            $(".crosswordPuzzle").show();
-            $(".skeletonPuzzle").hide();
-        }
-        else {
-            $(".crosswordHints").hide();
-            $(".fillinHints").hide();
-            $(".skeletonHints").show();
-
-            $(".crosswordPuzzle").hide();
-            $(".skeletonPuzzle").show();
-        }
-    }
 </script>
 </html>
