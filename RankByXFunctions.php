@@ -84,6 +84,12 @@ class RankByXFunctions
         return $count;
     }
 
+    function wordContainsChar($word, $char)
+    {
+        $this->wordProcessor->setWord($word, "telugu");
+        return $this->wordProcessor->containsChar($char);
+    }
+
 
     function generateSolutionTable()
     {
@@ -99,5 +105,9 @@ class RankByXFunctions
             }
             echo "</tr>";
         }
+    }
+
+    function boldLetterInWord($word, $letter) {
+        return preg_replace("/$letter/i", '<b>$0</b>', $word);
     }
 }

@@ -155,15 +155,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             $hitCountAdvance = $rankByXFunction->getHitCountBetweenWordsAdvance($word1, $word2);
 
                             $totalCount += count($hitCountAdvance);
-                            echo $word1."-".$word2.": ";
 
+                            $newWord1 = $word1;
                             foreach ($hitCountAdvance as $value) {
-                                echo $value." ";
+                                $newWord1 = $rankByXFunction->boldLetterInWord($newWord1,$value);
+                                $word2 = $rankByXFunction->boldLetterInWord($word2,$value);
                             }
+                            echo $newWord1."-".$word2.": ";
                             echo "<br />";
                         }
                         echo "Total: ".$totalCount."<br /><br />";
                     }
+
                     ?>
                     <table align="center">
                         <tr>
@@ -173,7 +176,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <th>Intersections</th>
                         </tr>
                         <?php
-                        //                        $rankByXFunction->generateSolutionTable();
+                        for ($arrayIndex = 0; $arrayIndex < count($wordsArray); $arrayIndex++) {
+                            echo "<tr>";
+
+                            for ($column = 0; $column < 4; $column++) {
+                                if ($column == 0)
+                                    echo "<td>" . ($arrayIndex + 1) . "</td>";
+                                else
+                                    echo "<td>Filler</td>";
+                            }
+                            echo "</tr>";
+                        }
                         ?>
                     </table>
                 </div>
