@@ -141,33 +141,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
 
                 <div id="Rank2" class="desc" style="display: none;">
-                    <?php
-                    for ($firstWord = 0; $firstWord < count($wordsArray); $firstWord++) {
-                        $totalCount = 0;
-                        $hitCountAdvance = array();
-                        $word1 = $wordsArray[$firstWord];
-                        for ($secondWord = 0; $secondWord < count($wordsArray); $secondWord++) {
-                            if ($firstWord == $secondWord)
-                                continue;
-
-                            $word2 = $wordsArray[$secondWord];
-
-                            $hitCountAdvance = $rankByXFunction->getHitCountBetweenWordsAdvance($word1, $word2);
-
-                            $totalCount += count($hitCountAdvance);
-
-                            $newWord1 = $word1;
-                            foreach ($hitCountAdvance as $value) {
-                                $newWord1 = $rankByXFunction->boldLetterInWord($newWord1,$value);
-                                $word2 = $rankByXFunction->boldLetterInWord($word2,$value);
-                            }
-                            echo $newWord1."-".$word2.": ";
-                            echo "<br />";
-                        }
-                        echo "Total: ".$totalCount."<br /><br />";
-                    }
-
-                    ?>
+                    <!--                    --><?php
+                    //                    for ($firstWord = 0; $firstWord < count($wordsArray); $firstWord++) {
+                    //                        $totalCount = 0;
+                    //                        $hitCountAdvance = array();
+                    //                        $word1 = $wordsArray[$firstWord];
+                    //                        for ($secondWord = 0; $secondWord < count($wordsArray); $secondWord++) {
+                    //                            if ($firstWord == $secondWord)
+                    //                                continue;
+                    //
+                    //                            $word2 = $wordsArray[$secondWord];
+                    //
+                    //                            $hitCountAdvance = $rankByXFunction->getHitCountBetweenWordsAdvance($word1, $word2);
+                    //
+                    //                            $totalCount += count($hitCountAdvance);
+                    //
+                    //                            $newWord1 = $word1;
+                    //                            foreach ($hitCountAdvance as $value) {
+                    //                                $newWord1 = $rankByXFunction->boldLetterInWord($newWord1,$value);
+                    //                                $word2 = $rankByXFunction->boldLetterInWord($word2,$value);
+                    //                            }
+                    //                            echo $newWord1."-".$word2.": ";
+                    //                            echo "<br />";
+                    //                        }
+                    //                        echo "Total: ".$totalCount."<br /><br />";
+                    //                    }
+                    //
+                    //                    ?>
                     <table align="center">
                         <tr>
                             <th>Rank</th>
@@ -176,14 +176,56 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <th>Intersections</th>
                         </tr>
                         <?php
-                        for ($arrayIndex = 0; $arrayIndex < count($wordsArray); $arrayIndex++) {
+
+
+                        $masterArray = array();
+                        for ($firstWord = 0; $firstWord < count($wordsArray); $firstWord++) {
+                            $totalCount = 0;
+                            $hitCountAdvance = array();
+                            $word1 = $wordsArray[$firstWord];
+                            $compareString = "";
+
+                            for ($secondWord = 0; $secondWord < count($wordsArray); $secondWord++) {
+                                if ($firstWord == $secondWord)
+                                    continue;
+
+                                $word2 = $wordsArray[$secondWord];
+
+                                $hitCountAdvance = $rankByXFunction->getHitCountBetweenWordsAdvance($word1, $word2);
+
+                                $totalCount += count($hitCountAdvance);
+
+                                $newWord1 = $word1;
+                                foreach ($hitCountAdvance as $value) {
+                                    $newWord1 = $rankByXFunction->boldLetterInWord($newWord1, $value);
+                                    $word2 = $rankByXFunction->boldLetterInWord($word2, $value);
+                                }
+                                $compareString = $compareString . $newWord1 . " - " . $word2 . ", ";
+                            }
+
+                            array_push($masterArray, array($word1, rtrim($compareString, ', '), $totalCount));
+                        }
+
+                        array_multisort(array_column($masterArray, 2), SORT_DESC, $masterArray);
+
+                        for ($i = 0; $i < count($masterArray); $i++) {
                             echo "<tr>";
 
                             for ($column = 0; $column < 4; $column++) {
-                                if ($column == 0)
-                                    echo "<td>" . ($arrayIndex + 1) . "</td>";
-                                else
-                                    echo "<td>Filler</td>";
+                                switch ($column) {
+                                    case 0:
+                                        echo "<td>" . ($i + 1) . "</td>";
+                                        break;
+                                    case 1:
+                                        echo "<td>" . $masterArray[$i][2] . "</td>";
+                                        break;
+                                    case 2:
+                                        echo "<td>" . $masterArray[$i][0] . "</td>";
+                                        break;
+                                    case 3:
+                                        echo "<td>" . $masterArray[$i][1] . "</td>";
+                                        break;
+                                }
                             }
                             echo "</tr>";
                         }
