@@ -36,7 +36,8 @@
 
                         <div class="form-group">
                             <div class="col-sm-1"></div>
-                            <label class="control-label col-sm-9" style="text-align: left;">Enter your words (one per
+                            <label class="control-label col-sm-9" style="text-align: left;">Enter your words here (one
+                                per
                                 line).
                             </label>
                         </div>

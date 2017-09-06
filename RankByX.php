@@ -57,6 +57,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                 </div>
                 <p>Rank the following words by intersections</p>
+
+                <!-- Code for displaying the input of words -->
                 <?php
 
                 $rows = sizeof($wordsArray);
@@ -128,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                                 $word2 = $wordsArray[$secondWord];
 
-                                $hitCountAdvance = $rankByXFunction->getHitCountBetweenWords($word1, $word2, false);
+                                $hitCountAdvance = $rankByXFunction->getHitCountBetweenWords($word1, $word2, true);
 
                                 $totalCount += count($hitCountAdvance);
 
@@ -243,6 +245,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </body>
 
 <script>
+
+    // Function that displays the solution based on radio buttons.
     $(document).ready(function () {
         $("input[name$='rank']").click(function () {
             var test = $(this).val();
@@ -252,41 +256,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         });
     });
 
-    // Set default spectrum elements
-    $(".blankSquareColor").spectrum({
-        color: "#FFFFFF",
-        change: function (color) {
-            $(".unfilled").css("background-color", color.toHexString());
-        }
-    });
-
-    $(".letterSquareColor").spectrum({
-        color: "#EEEEEE",
-        change: function (color) {
-            $(".filled").css("background-color", color.toHexString());
-        }
-    });
-
-    $(".letterColor").spectrum({
-        color: "#000000",
-        change: function (color) {
-            $(".filled").css("color", color.toHexString());
-        }
-    });
-
-    $(".lineColor").spectrum({
-        color: "#000000",
-        change: function (color) {
-            $(".filled").css("border", "2px solid " + color.toHexString());
-
-            // Only change hidden lines if they're showing - need to remain white for copy and pasting to word if hidden
-            if ($(".unfilled").css("visibility") === "visible") {
-                $(".unfilled").css("border", "2px solid " + color.toHexString());
-            }
-
-        }
-    });
-
-    $(".crossword").css("border", "2px solid " + $(".lineColor").spectrum('get').toHexString());
 </script>
 </html>
